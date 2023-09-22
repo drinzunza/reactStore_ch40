@@ -29,6 +29,5 @@ function App() {
   );
 }
 
+// TEST CHANGE
 export default App;
-
-//create the footer component and import the footer component, please

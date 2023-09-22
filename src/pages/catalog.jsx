@@ -4,20 +4,20 @@ import "./catalog.css";
 import { useEffect, useState } from "react";
 
 function Catalog(props){
-    
-    let [products, setProducts]= useState([]);   
-    useEffect(function(){
-        //similar to the init()
-        console.log("component loaded");
-        loadCatalog();
-    },[]);
+    let [products, setProducts] = useState([]);
 
-    function loadCatalog(){
-        let service = new DataService();
-        let prods = service.getProducts();
-        console.log(prods);
-        setProducts(prods);
+    useEffect(function () {
+      console.log('component loaded');
+      loadCatalog();
+    }, []);
+
+    function loadCatalog() {
+      let service = new DataService();
+      let prods = service.getProducts();
+      console.log(prods);
+      setProducts(prods);
     }
+
     return(
         <div className="catalog">
             <h1> Check out our {products.length} new products</h1>
