@@ -8,25 +8,29 @@ import Cart from './pages/cart';
 import Admin from './pages/admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
+import GlobalState from './state/globalState';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
+      <GlobalState>
+        <BrowserRouter>
+          <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
 
-        <Footer />
-      </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+      </GlobalState>
     </div>
   );
 }
@@ -34,10 +38,9 @@ function App() {
 // TEST CHANGE
 export default App;
 
-
 /**
  * - create the component (jsx, css)
  * - register a route on app.js
  * - create a menu item on navbar
- * 
+ *
  */
