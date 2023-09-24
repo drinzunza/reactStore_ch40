@@ -1,13 +1,27 @@
 import './product.css';
 import QuantityPicker from './quantityPicker';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-//when the component is loaded, console.log ("component loaded");
 function Product(props) {
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(function () {
     //when the component is loaded
     console.log('component loaded');
   }, []);
+
+  function onQuantityChange(value) {    
+    setQuantity(value);
+  }
+
+  function getTotal() {
+    const total = quantity * props.data.price;
+    return total.toFixed(2);
+  }
+
+  function handleAdd() {
+    console.log("a message");
+  }
 
   return (
     <div className="product">
@@ -15,14 +29,22 @@ function Product(props) {
       <h5> {props.data.title} </h5>
 
       <div className="prices">
-        <label className="total">${props.data.price.toFixed(2)}</label>
+        <label className="total">${getTotal()}</label>
         <label className="price">${props.data.price.toFixed(2)}</label>
       </div>
 
-      <QuantityPicker />
+      <QuantityPicker onChange={onQuantityChange} />
 
-      <button className="btn btn-sm btn-success">Add</button>
+      <button onClick={handleAdd} className="btn btn-sm btn-success">Add</button>
     </div>
   );
 }
 export default Product;
+
+
+/**
+ * 
+ * click on the button
+ * call a function ('handleAdd')
+ * the function should console log a message
+ */
